@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: navia-algo-trader
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    plan: free
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: PAPER_TRADING
+        value: "true"
+      - key: SIMULATE_FEED
+        value: "true"
+      - key: STRATEGY
+        value: "ma"
+      - key: DEFAULT_SYMBOL
+        value: "RELIANCE-EQ"
+      - key: DEFAULT_EXCHANGE
+        value: "NSE"
+      - key: DEFAULT_QUANTITY
+        value: "1"
+      - key: DEFAULT_PRODUCT
+        value: "MIS"
+      - key: STOP_LOSS_PCT
+        value: "1.0"
+      - key: TAKE_PROFIT_PCT
+        value: "2.0"
+      - key: MAX_DAILY_LOSS
+        value: "5000.0"
+      - key: NAVIA_BASE_URL
+        value: "https://naviaapt.navia.co.in:9003"
+      - key: NAVIA_WS_URL
+        value: "wss://naviaapt.navia.co.in:9003/ws"
+      # ⚠️ SECRET values — Set these in Render Dashboard > Environment
+      # Do NOT put real passwords here!
+      - key: NAVIA_CLIENT_CODE
+        sync: false   # enter in Render dashboard
+      - key: NAVIA_PASSWORD
+        sync: false   # enter in Render dashboard
+      - key: NAVIA_API_KEY
+        sync: false   # enter in Render dashboard
+      - key: NAVIA_AUTH_TOKEN
+        value: "DEFAULT"
